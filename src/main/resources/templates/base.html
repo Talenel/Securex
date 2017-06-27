@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org ">
+<html lang="en" xmlns:th="www.thymeleaf.org "
+      xmlns:sec="www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,9 +33,26 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/books/add">Add Book</a></li>
+
                     <li><a href="/books/list">Show Books</a></li>
-                    <li><a href="/login">Login</a></li>
+
+                    <th:block sec:authorize="isAuthenticated()">
+                        <li><a href="/books/add">Add Book</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </th:block>
+                    <th:block sec:authorize="isAnonymous()">
+                        <li><a href="/login">Login</a></li>
+
+                    </th:block>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div sec:authorize="isAuthenticated()">
+                            Welcome, <span sec:authentication="name"></span>!
+                        </div>
+                    </li>
+
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -46,7 +64,13 @@
     <br/>
     <br/>
     <div class="wrapper">
+
         <div class="container">
+            <div th:fragment="login">
+
+
+
+            </div>
 
             <div class="starter-template">
                 <h1>Securex</h1>
