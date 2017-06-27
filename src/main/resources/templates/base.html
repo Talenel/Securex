@@ -44,16 +44,24 @@
                         <li><a href="/login">Login</a></li>
 
                     </th:block>
-
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div sec:authorize="isAuthenticated()">
-                            Welcome, <span sec:authentication="name"></span>!
+                            <p>Welcome, <span sec:authentication="name"></span>!</p>
                         </div>
                     </li>
 
                 </ul>
+                <div sec:authorize="isAuthenticated()">
+                    <ul class="nav navbar-nav navbar-right">
+
+                            <li>
+
+                                <a href="#">Welcome, <span sec:authentication="name"></span>!</a>
+                            </li>
+
+
+                    </ul>
+                </div>
             </div><!--/.nav-collapse -->
         </div>
     </nav>
