@@ -31,7 +31,7 @@
             <th>Actions</th>
         </tr>
         <tr th:each="row : ${books}">
-            <td></td>
+            <td><img th:src="@{${row.image}}" alt="Cover" style="width:100px;height:100px;"/> </td>
             <td th:text="${row.title}"></td>
             <td th:text="${row.author}"></td>
             <td><a href="#" th:href="@{/books/edit/{bookid} (bookid = ${row.id})}">Update</a> -

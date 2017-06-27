@@ -36,7 +36,7 @@ public class BookController {
     @RequestMapping("/edit/{id}")
     public String editBook(@PathVariable("id")int bookid, Model model){
         Book book = new Book();
-        book = bookRepository.findOne(bookid);
+        book = bookRepository.findOneById(bookid);
         model.addAttribute("book", book);
         return "bookform";
     }
